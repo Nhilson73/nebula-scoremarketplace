@@ -29,6 +29,8 @@ BASE_PATH=/nebula-scoremarketplace npm run build
 
 El workflow `.github/workflows/deploy-frontend.yml` compila y despliega automáticamente en cada push a `main`.
 
+URL pública: https://nhilson73.github.io/nebula-scoremarketplace/
+
 ## Notas
 
 - Como GitHub Pages es estático, no hay backend Python en la versión desplegada.
