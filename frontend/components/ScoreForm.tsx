@@ -70,6 +70,7 @@ export function ScoreForm({ methodology, onSubmit, onCancel }: Props) {
     lot_details: {
       unit: methodology.product === "wine" ? "liters" : "kg",
       currency: "USD",
+      process_method: methodology.product === "wine" ? "red" : "washed",
     },
   });
 

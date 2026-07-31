@@ -30,18 +30,15 @@ export function saveUserLots(lots: DemoLot[]) {
 export function addUserLot(lot: DemoLot) {
   const lots = [lot, ...loadUserLots()];
   saveUserLots(lots);
-  emitChange();
 }
 
 export function deleteUserLot(publicId: string) {
   const lots = loadUserLots().filter((l) => l.public_id !== publicId);
   saveUserLots(lots);
-  emitChange();
 }
 
 export function clearUserLots() {
   saveUserLots([]);
-  emitChange();
 }
 
 export function getAllLots(): DemoLot[] {
