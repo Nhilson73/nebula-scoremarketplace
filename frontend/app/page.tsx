@@ -7,7 +7,7 @@ import { useLots } from "@/lib/useLots";
 import type { DemoLot } from "@/lib/demo-data";
 
 export default function Home() {
-  const { lots, mounted, deleteLot } = useLots();
+  const { lots, deleteLot } = useLots();
 
   const featured = Object.values(
     lots.reduce<Record<string, DemoLot>>((acc, lot) => {
@@ -47,7 +47,7 @@ export default function Home() {
           <div className="text-center">
             <h2 className="text-3xl font-bold md:text-5xl">Lotes destacados</h2>
             <p className="mx-auto mt-4 max-w-2xl text-foreground/70">
-              {mounted ? "Muestra de lotes verificados con score Nebula." : "Cargando lotes..."}
+              Muestra de lotes verificados con score Nebula.
             </p>
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">

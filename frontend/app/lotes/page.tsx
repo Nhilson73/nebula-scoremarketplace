@@ -7,15 +7,8 @@ import { LotCard } from "@/components/LotCard";
 import { LotDetail } from "@/components/LotDetail";
 import { useLots } from "@/lib/useLots";
 
-function LotsCatalog() {
-  const searchParams = useSearchParams();
-  const selectedPublicId = searchParams.get("lot");
-  const { lots, mounted, deleteLot, clearAll } = useLots();
-
-  const selectedLot = selectedPublicId
-    ? lots.find((l) => l.public_id === selectedPublicId)
-    : undefined;
-
+function LotsGrid() {
+  const { lots, deleteLot, clearAll } = useLots();
   const userLotsCount = lots.filter((l) => !l.is_demo).length;
 
   return (
@@ -40,31 +33,40 @@ function LotsCatalog() {
           )}
         </div>
 
-        {selectedLot && (
-          <div className="mx-auto mt-10 max-w-4xl">
-            <LotDetail lot={selectedLot} onDelete={deleteLot} />
-          </div>
-        )}
-
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {lots.map((lot) => (
             <LotCard key={lot.public_id} lot={lot} onDelete={deleteLot} />
           ))}
         </div>
-
-        {!mounted && (
-          <p className="mt-12 text-center text-foreground/60">Cargando lotes...</p>
-        )}
       </div>
     </section>
+  );
+}
+
+function LotDetailPanel() {
+  const searchParams = useSearchParams();
+  const selectedPublicId = searchParams.get("lot");
+  const { lots, deleteLot } = useLots();
+
+  const selectedLot = selectedPublicId
+    ? lots.find((l) => l.public_id === selectedPublicId)
+    : undefined;
+
+  if (!selectedLot) return null;
+
+  return (
+    <div className="mx-auto mb-12 max-w-4xl px-4">
+      <LotDetail lot={selectedLot} onDelete={deleteLot} />
+    </div>
   );
 }
 
 export default function LotsPage() {
   return (
     <Shell>
-      <Suspense fallback={<p className="py-20 text-center text-foreground/60">Cargando catálogo...</p>}>
-        <LotsCatalog />
+      <LotsGrid />
+      <Suspense fallback={<p className="py-8 text-center text-foreground/60">Cargando detalle...</p>}>
+        <LotDetailPanel />
       </Suspense>
     </Shell>
   );
