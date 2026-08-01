@@ -64,10 +64,10 @@ function LotDetailPanel() {
 export default function LotsPage() {
   return (
     <Shell>
-      <LotsGrid />
       <Suspense fallback={<p className="py-8 text-center text-foreground/60">Cargando detalle...</p>}>
         <LotDetailPanel />
       </Suspense>
+      <LotsGrid />
     </Shell>
   );
 }
