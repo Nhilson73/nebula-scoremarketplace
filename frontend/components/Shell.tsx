@@ -71,7 +71,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
 
       <footer className="border-t border-primary/10 bg-surface px-4 py-12">
         <div className="mx-auto max-w-7xl text-center text-sm text-foreground/50">
-          <p>© {new Date().getFullYear()} Cafelium Foundation. Nebula Score®, Nebula Fermentation® y Nebula OriginBlok® son marcas del ecosistema Nebula.</p>
+          <p>© {new Date().getFullYear()} Cafelium SRL. Nebula Score®, Nebula Fermentation® y Nebula OriginBlok® son marcas del ecosistema Nebula.</p>
           <p className="mt-2">Lotes marcados con [DEMO] son datos de demostración.</p>
         </div>
       </footer>
